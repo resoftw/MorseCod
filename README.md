@@ -4,6 +4,8 @@ A Morse code trainer PWA built with SvelteKit. Realistic CW sidetone audio
 (WebAudio sine keyed with 5 ms raised-cosine edges), PARIS-standard timing,
 optional Farnsworth spacing, and full offline support.
 
+Generated using Claude Fable 5.
+
 ## Pages
 
 - **`/` — Tap key board**: a faithful replica of the nuxgadgets PCB gadget.

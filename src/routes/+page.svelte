@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { CwPlayer } from '$lib/morse/audio';
 	import { settings } from '$lib/settings.svelte';
 	import ControlRail from '$lib/components/ControlRail.svelte';
@@ -199,8 +200,8 @@
 	<div class="topbar">
 		<span class="label">MORSECOD · TAP KEY</span>
 		<nav class="links">
-			<a class="btn navlink" href="/tree">TREE →</a>
-			<a class="btn navlink" href="/trainer">STATION →</a>
+			<a class="btn navlink" href="{base}/tree">TREE →</a>
+			<a class="btn navlink" href="{base}/trainer">STATION →</a>
 		</nav>
 	</div>
 

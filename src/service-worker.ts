@@ -1,7 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 /// <reference lib="webworker" />
 
-import { build, files, prerendered, version } from '$service-worker';
+import { base, build, files, prerendered, version } from '$service-worker';
 
 const sw = self as unknown as ServiceWorkerGlobalScope;
 
@@ -60,7 +60,7 @@ sw.addEventListener('fetch', (event) => {
 				return res;
 			} catch (err) {
 				// Offline navigation falls back to the app shell.
-				const shell = await cache.match('/');
+				const shell = await cache.match(`${base}/`);
 				if (shell) return shell;
 				throw err;
 			}

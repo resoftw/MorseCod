@@ -2,7 +2,7 @@
 // checks hydration, mode switching, TX playback visuals, and the keyer.
 import { chromium } from 'playwright-core';
 
-const BASE = 'http://localhost:4173';
+const BASE = process.env.BASE ?? 'http://localhost:4173/morsec';
 const results = [];
 const ok = (name, pass, extra = '') =>
 	results.push(`${pass ? 'PASS' : 'FAIL'}  ${name}${extra ? ' — ' + extra : ''}`);
@@ -86,4 +86,5 @@ ok('service worker registered', swCount >= 1, `${swCount} registration(s)`);
 
 console.log(results.join('\n'));
 await browser.close();
+
 

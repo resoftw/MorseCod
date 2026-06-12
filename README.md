@@ -51,9 +51,33 @@ node tap-test.mjs     # keys T→M→G→Q on the tap board and checks the LEDs
 
 ## Build / deploy
 
-`npm run build` produces a fully static site in `build/` (adapter-static,
-prerendered, with a service worker for offline use). Host it on any static
-file server; `404.html` is the SPA fallback.
+Uses `@sveltejs/adapter-node` with base path **`/morsec`** and default port
+**3500**. `npm run build` produces a standalone Node server in `build/`:
+
+```sh
+npm run start                  # = node start.js → port 3500
+PORT=4000 npm run start        # override port
+ORIGIN=https://example.com npm run start   # set when behind a proxy
+```
+
+All routes live under the base path: `http://localhost:3500/morsec/`,
+`/morsec/tree`, `/morsec/trainer`. Keep it alive with pm2
+(`pm2 start start.js --name morsec`) or a systemd unit.
+
+Reverse proxy (nginx) — serve it as a subfolder of any domain:
+
+```nginx
+location /morsec {
+    proxy_pass http://127.0.0.1:3500;   # no trailing slash: path passes as-is
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+
+HTTPS on the proxy is required for the service worker / PWA install.
+The base path is set in `vite.config.ts` (`paths.base`) and mirrored in
+`static/manifest.webmanifest` — change both to move the app elsewhere.
+In dev, the app serves at `http://localhost:5173/morsec`.
 
 ## PWA
 

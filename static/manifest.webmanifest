@@ -2,34 +2,34 @@
 	"name": "MORSECOD — CW Station",
 	"short_name": "MORSECOD",
 	"description": "Learn, send and copy Morse code with realistic CW sidetone audio.",
-	"start_url": "/",
-	"scope": "/",
+	"start_url": "/morsec/",
+	"scope": "/morsec/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"background_color": "#0c0e0a",
 	"theme_color": "#0c0e0a",
 	"shortcuts": [
-		{ "name": "Tap key board", "url": "/" },
-		{ "name": "Decoder tree", "url": "/tree" },
-		{ "name": "Send (TX)", "url": "/trainer?mode=tx" },
-		{ "name": "Copy challenge (RX)", "url": "/trainer?mode=rx" },
-		{ "name": "Telegraph key", "url": "/trainer?mode=key" }
+		{ "name": "Tap key board", "url": "/morsec/" },
+		{ "name": "Decoder tree", "url": "/morsec/tree" },
+		{ "name": "Send (TX)", "url": "/morsec/trainer?mode=tx" },
+		{ "name": "Copy challenge (RX)", "url": "/morsec/trainer?mode=rx" },
+		{ "name": "Telegraph key", "url": "/morsec/trainer?mode=key" }
 	],
 	"icons": [
 		{
-			"src": "/icon.svg",
+			"src": "/morsec/icon.svg",
 			"sizes": "any",
 			"type": "image/svg+xml",
 			"purpose": "any"
 		},
 		{
-			"src": "/icon-192.png",
+			"src": "/morsec/icon-192.png",
 			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "any"
 		},
 		{
-			"src": "/icon-512.png",
+			"src": "/morsec/icon-512.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any maskable"

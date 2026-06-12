@@ -8,7 +8,7 @@ const browser = await chromium.launch({
 });
 const page = await browser.newPage({ viewport: { width: 480, height: 1100 } });
 page.on('pageerror', (e) => console.log('PAGEERROR', e.message));
-await page.goto('http://localhost:4173/', { waitUntil: 'networkidle' });
+await page.goto((process.env.BASE ?? 'http://localhost:4173/morsec') + '/', { waitUntil: 'networkidle' });
 await page.waitForTimeout(600);
 await page.screenshot({ path: 'shot-tap-idle.png' });
 
@@ -47,3 +47,4 @@ for (let i = 0; i < 5; i++) {
 await page.waitForTimeout(900);
 console.log('rx after junk (unchanged?):', JSON.stringify(await page.locator('.rx-text').innerText()));
 await browser.close();
+

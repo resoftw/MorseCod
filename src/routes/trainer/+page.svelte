@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { base } from '$app/paths';
 	import { CwPlayer } from '$lib/morse/audio';
 	import Scope from '$lib/components/Scope.svelte';
 	import TxPanel from '$lib/components/TxPanel.svelte';
@@ -76,7 +77,7 @@
 		<div class="lamps">
 			<span class="lamp pwr" title="power"><i></i>PWR</span>
 			<span class="lamp air" class:lit={onAir} title="transmitting"><i></i>ON AIR</span>
-			<a class="back" href="/" title="decoder board">⌁ BOARD</a>
+			<a class="back" href="{base}/" title="decoder board">⌁ BOARD</a>
 		</div>
 	</header>
 

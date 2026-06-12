@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 	import { CwPlayer } from '$lib/morse/audio';
 	import { buildSchedule, MORSE_TABLE, REVERSE_TABLE, type MorseSchedule } from '$lib/morse/morse';
 	import { settings } from '$lib/settings.svelte';
@@ -153,8 +154,8 @@
 	<div class="topbar">
 		<span class="label">MORSECOD · DECODER BOARD</span>
 		<span class="links">
-			<a class="btn station-link" href="/">TAP KEY →</a>
-			<a class="btn station-link" href="/trainer">STATION →</a>
+			<a class="btn station-link" href="{base}/">TAP KEY →</a>
+			<a class="btn station-link" href="{base}/trainer">STATION →</a>
 		</span>
 	</div>
 

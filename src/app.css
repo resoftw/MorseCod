@@ -1,0 +1,221 @@
+/* ── MORSECOD design system ──────────────────────────────────────────
+   Aesthetic: field telegraph station. Dark olive-charcoal chassis,
+   phosphor-amber readouts, machined-metal panels with corner screws. */
+
+:root {
+	--bg: #0c0e0a;
+	--chassis: #14170f;
+	--panel: #181c12;
+	--panel-2: #1e2317;
+	--line: #2a2f24;
+	--line-bright: #3a4030;
+	--amber: #ffb000;
+	--amber-dim: #8a6200;
+	--amber-glow: rgba(255, 176, 0, 0.45);
+	--phosphor: #b8ffcf;
+	--red: #ff4530;
+	--ink: #d8dcc8;
+	--ink-dim: #79805f;
+	--ink-faint: #4a5038;
+	--display: 'Michroma', sans-serif;
+	--mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--mono);
+	min-height: 100%;
+}
+
+body {
+	/* faint phosphor wash + grid etching on the chassis */
+	background-image:
+		radial-gradient(120% 80% at 50% -10%, rgba(184, 255, 207, 0.05), transparent 60%),
+		linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+	background-size: 100% 100%, 28px 28px, 28px 28px;
+}
+
+::selection {
+	background: var(--amber);
+	color: #0c0e0a;
+}
+
+/* ── shared component classes ── */
+
+.panel {
+	position: relative;
+	background: linear-gradient(175deg, var(--panel-2), var(--panel));
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.05),
+		0 8px 24px rgba(0, 0, 0, 0.5);
+	padding: 18px;
+}
+
+/* corner screws */
+.panel.screws::before,
+.panel.screws::after {
+	content: '';
+	position: absolute;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background:
+		linear-gradient(45deg, transparent 44%, #0a0c08 44%, #0a0c08 56%, transparent 56%),
+		radial-gradient(circle at 35% 30%, #4d5440, #20251a 70%);
+	box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.panel.screws::before {
+	top: 8px;
+	left: 8px;
+	box-shadow:
+		inset 0 -1px 1px rgba(0, 0, 0, 0.8),
+		0 1px 0 rgba(255, 255, 255, 0.06),
+		calc(100cqw - 23px) 0 0 0 #2c3122;
+}
+.panel.screws::after {
+	bottom: 8px;
+	right: 8px;
+}
+
+.label {
+	font-family: var(--display);
+	font-size: 0.58rem;
+	letter-spacing: 0.22em;
+	color: var(--ink-dim);
+	text-transform: uppercase;
+}
+
+.btn {
+	font-family: var(--display);
+	font-size: 0.7rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--ink);
+	background: linear-gradient(180deg, #262b1d, #181c12);
+	border: 1px solid var(--line-bright);
+	border-radius: 8px;
+	padding: 12px 20px;
+	cursor: pointer;
+	transition: transform 60ms ease, box-shadow 120ms ease, border-color 120ms ease;
+	box-shadow: 0 3px 0 #0a0c08, inset 0 1px 0 rgba(255, 255, 255, 0.07);
+	user-select: none;
+}
+.btn:hover {
+	border-color: var(--amber-dim);
+	color: var(--amber);
+}
+.btn:active {
+	transform: translateY(2px);
+	box-shadow: 0 1px 0 #0a0c08, inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.btn.primary {
+	color: #140e00;
+	background: linear-gradient(180deg, #ffc83d, #e89c00);
+	border-color: #ffd66b;
+	box-shadow: 0 3px 0 #6b4a00, 0 0 18px rgba(255, 176, 0, 0.25),
+		inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+.btn.primary:hover {
+	color: #140e00;
+	filter: brightness(1.06);
+}
+.btn.primary:active {
+	box-shadow: 0 1px 0 #6b4a00, inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.btn:disabled {
+	opacity: 0.45;
+	cursor: default;
+	pointer-events: none;
+}
+
+input[type='text'],
+textarea {
+	width: 100%;
+	background: #0a0c07;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	color: var(--amber);
+	font-family: var(--mono);
+	font-size: 1.05rem;
+	letter-spacing: 0.08em;
+	padding: 12px 14px;
+	outline: none;
+	box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+	text-transform: uppercase;
+}
+input[type='text']:focus,
+textarea:focus {
+	border-color: var(--amber-dim);
+	box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(255, 176, 0, 0.12);
+}
+textarea {
+	resize: vertical;
+	min-height: 64px;
+}
+input::placeholder,
+textarea::placeholder {
+	color: var(--ink-faint);
+	text-transform: none;
+}
+
+/* fader-style range inputs */
+input[type='range'] {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 26px;
+	background: transparent;
+	cursor: pointer;
+}
+input[type='range']::-webkit-slider-runnable-track {
+	height: 6px;
+	background: linear-gradient(180deg, #070905, #11140c);
+	border-radius: 3px;
+	border: 1px solid #060805;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 14px;
+	height: 26px;
+	margin-top: -11px;
+	border-radius: 3px;
+	background:
+		linear-gradient(90deg, transparent 45%, var(--amber) 45%, var(--amber) 55%, transparent 55%),
+		linear-gradient(180deg, #3c4230, #1c2014);
+	border: 1px solid #0a0c08;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+input[type='range']::-moz-range-track {
+	height: 6px;
+	background: #0a0c07;
+	border-radius: 3px;
+	border: 1px solid #060805;
+}
+input[type='range']::-moz-range-thumb {
+	width: 14px;
+	height: 26px;
+	border-radius: 3px;
+	background:
+		linear-gradient(90deg, transparent 45%, var(--amber) 45%, var(--amber) 55%, transparent 55%),
+		linear-gradient(180deg, #3c4230, #1c2014);
+	border: 1px solid #0a0c08;
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.25; }
+}
